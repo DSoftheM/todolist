@@ -1,0 +1,127 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+li {
+	list-style: none;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+img {
+	vertical-align: top;
+}
+html,
+body {
+	height: 100%;
+}
+html {
+	font-size: 16px;
+}
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+}
+
+
+// ===========================================
+
+// TODOLIST:
+
+.list {
+	background-color: rgba(51, 51, 51, 0.305);
+	// .list__container
+	&__container {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	// .list__body
+	&__body {
+	}
+}
+.body-list {
+	border: 2px solid black;
+	padding: 20px;
+	// overflow: hidden;
+
+	&__item {
+		border: 2px solid black;
+		background: rgba(255, 255, 255, 0.415);
+		
+		// height: 0;
+		&:hover .body-list__more {
+			// background: #000;
+			animation: moreInformation 0.5s ease 0s 1 forwards;
+			overflow: visible;
+		}
+	}
+
+	&__item:not(:last-child) {
+		margin-bottom: 10px;
+	}
+
+	&__more {
+		transition: all 0.3s ease 0s;
+		height: 0;
+		opacity: 0;
+	}
+}
+
+.deal {
+	display: flex;
+	justify-content: space-between;
+	background: rgba(220, 5, 5, 0.374);
+
+	&:hover {
+		// animation: moreInformation .5s ease 0s 1 ;
+	}
+
+	// .deal__text
+	&__text {
+	}
+	// .deal__group
+	&__group {
+		display: flex;
+		gap: 20px;
+	}
+}
+.buttons {
+	// .buttons__show-more
+	&__show-more {
+	}
+	// .buttons__done
+	&__done {
+	}
+	// .buttons__delete
+	&__delete {
+	}
+}
+
+@keyframes moreInformation {
+	0% {
+		height: 0px;
+	}
+	100% {
+		height: 100px;
+		opacity: 1;
+	}
+}
+
+
