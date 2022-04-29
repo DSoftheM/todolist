@@ -7,14 +7,14 @@ function TodoList() {
     let [deals, setDeals] = useState([]);
 
     //test
-    deals = ['need to buy sugar', 'remains in team'];
+    // deals = ['need to buy sugar', 'remains in team'];
 
     return (
         <>
              <TodoListHeader
-                dealsCount={12}
+                dealsCount={deals.length}
             />
-            <TodoInput setDeals={setDeals}/>
+            <TodoInput deals={deals} setDeals={setDeals}/>
             <Deals deals={deals}/>
         </>
     )

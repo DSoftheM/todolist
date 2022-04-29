@@ -6,7 +6,7 @@ function TodoListHeader({dealsCount}) {
             <div className='header-todolist__name'>TodoList</div>
             <div className='header-todolist__deals'>
                 Deals: 
-                <span>{dealsCount}</span>
+                <span> {dealsCount}</span>
             </div>
         </div>
     )

@@ -6,3 +6,7 @@
 .deals__li:not(:last-child) {
     margin-bottom: 15px;
 }
+
+.deals__li {
+    transition: all .5s ease-out 0s;
+}
