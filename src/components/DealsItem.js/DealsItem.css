@@ -1,0 +1,55 @@
+.item-deals {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deals__txt {
+    
+}
+
+.group-btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.group-btns__add {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(2, 236, 33);
+}
+
+.check-mark {
+    position: relative;
+}
+
+.check-mark::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    left: -10px;
+    top: 0;
+}
+
+.check-mark::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+    transform: rotate(-45deg);
+    left: -6px;
+    top: -3px;
+}
+
+.trash__img {
+    width: 40px;
+    height: 40px;
+}
