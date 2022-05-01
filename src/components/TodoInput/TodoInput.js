@@ -1,6 +1,17 @@
 import './TodoInput.css';
 
 export default function TodoInput({deals, setDeals}) {
+
+    function onAddClick(event) {
+        let input = document.querySelector('.input-field');
+        if (input.value) {
+            setDeals([inputText, ...deals]);
+            localStorage.setItem('deals', [inputText, ...deals])
+            input.value = '';
+        } else {
+            console.log('value is empty');
+        }
+    }
     
     let inputText = '';
     return (
@@ -15,16 +26,7 @@ export default function TodoInput({deals, setDeals}) {
             ></input>
             <div 
                 className="add"
-                onClick={() => {
-                    let input = document.querySelector('.input-field');
-                    if (input.value) {
-                        setDeals([inputText, ...deals]);
-                        input.value = '';
-                    } else {
-                        console.log('value is empty');
-                    }
-                }}
-            
+                onClick={(e) => onAddClick(e)}
             >Add</div>
         </div>
     );

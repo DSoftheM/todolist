@@ -4,19 +4,22 @@ import './Deals.css';
 
 export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDeals}) {
 
-    let currentDeals = [];
-    switch (dealsName) {
-        case DealNames.done:
-            currentDeals = [...doneDeals];
-            break;
-        case DealNames.uncompleted:
-            currentDeals = [...deals];
-            break;
-        default:
-            throw new Error('dealsName ?');
-    };
+    let localStorageDeals = localStorage.getItem('deals');
 
-    console.log('Deals');
+    let currentDeals = localStorageDeals 
+        ? localStorageDeals.split(',') 
+        : [];
+    // switch (dealsName) {
+    //     case DealNames.done:
+    //         currentDeals = [...doneDeals];
+    //         break;
+    //     case DealNames.uncompleted:
+    //         currentDeals = [...deals];
+    //         break;
+    //     default:
+    //         throw new Error('dealsName ?');
+    // };
+
 
 
 

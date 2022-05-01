@@ -6,19 +6,28 @@ export default function DealsItem({dealText = '', isDone = false, index = -1, do
     
     function onDoneClick() {
         const ul = document.querySelector('.deals__items'); 
-        console.log('ссылка на list ul :>> ', ul);
         const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
+
+        console.log('ссылка на list ul :>> ', ul);
         index = getIndex(ul, thisLi);
         
         setDoneDeals([...doneDeals, dealText]);
 
-        
+        updateLocalStorage();
 
         // const updatedDeals = [...deals];
         // updatedDeals.splice(updatedDeals.indexOf(dealText), 1);
         // setDeals(updatedDeals);
 
         addClassesDoneAndRemove(index);
+    }
+
+    function updateLocalStorage() {
+        let currentStorageDeals = localStorage.getItem('deals').split(',');
+        let indexOfStorage = currentStorageDeals.indexOf(dealText);
+        console.log(indexOfStorage);
+        let updatedStorageDeals = currentStorageDeals.splice(indexOfStorage, 1);
+        localStorage.setItem('deals', updatedStorageDeals);
     }
 
     return (
