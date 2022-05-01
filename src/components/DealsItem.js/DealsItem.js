@@ -25,8 +25,8 @@ export default function DealsItem({dealText = '', isDone = false, index = -1, do
     function updateLocalStorage() {
         let currentStorageDeals = localStorage.getItem('deals').split(',');
         let indexOfStorage = currentStorageDeals.indexOf(dealText);
-        console.log(indexOfStorage);
-        let updatedStorageDeals = currentStorageDeals.splice(indexOfStorage, 1);
+        let updatedStorageDeals = [...currentStorageDeals];
+        updatedStorageDeals.splice(indexOfStorage, 1);
         localStorage.setItem('deals', updatedStorageDeals);
     }
 

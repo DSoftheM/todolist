@@ -3,7 +3,7 @@
   (в doneDeals state записывается лишнее значение из-за этого)
  + рывок при удалении дела
  + добавлять дело вверх списка
- - fix updateLocalStorage in DealItem.js
+ + fix updateLocalStorage in DealItem.js (Array.prototype.splice() возвращает удалённый элемент)
 
 1) компактное отображение списка дел, если их много
 2) возможность загружать файлы в формате тхт, такой струтуры
