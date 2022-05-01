@@ -6,7 +6,7 @@ export default function DealsItem({dealText = '', isDone = false, index = -1, do
     
     function onDoneClick() {
         const ul = document.querySelector('.deals__items'); 
-        console.log('ul :>> ', ul);
+        console.log('ссылка на list ul :>> ', ul);
         const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
         index = getIndex(ul, thisLi);
         
@@ -49,8 +49,7 @@ function getIndex(parent, child) {
 
 
 function addClassesDoneAndRemove(index) {
-    document.querySelectorAll('.deals__li')[index].classList.add('done');
-    document.querySelectorAll('.deals__li')[index].classList.add('remove');
+    document.querySelectorAll('.deals__li')[index].classList.add('done', 'remove');
 }
 
 

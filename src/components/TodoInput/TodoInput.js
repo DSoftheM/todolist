@@ -18,7 +18,7 @@ export default function TodoInput({deals, setDeals}) {
                 onClick={() => {
                     let input = document.querySelector('.input-field');
                     if (input.value) {
-                        setDeals([...deals, inputText]);
+                        setDeals([inputText, ...deals]);
                         input.value = '';
                     } else {
                         console.log('value is empty');

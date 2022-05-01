@@ -16,7 +16,7 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
             throw new Error('dealsName ?');
     };
 
-    // currentDeals.reverse();
+    console.log('Deals');
 
 
 
