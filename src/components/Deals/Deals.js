@@ -1,22 +1,36 @@
 import DealsItem from '../DealsItem.js/DealsItem';
+import { DealNames } from '../TodoList';
 import './Deals.css';
 
-export default function Deals({deals, setDeals, doneDeals, setDoneDeals}) {
+export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDeals}) {
+
+    let currentDeals = [];
+    switch (dealsName) {
+        case DealNames.done:
+            currentDeals = [...doneDeals];
+            break;
+        case DealNames.uncompleted:
+            currentDeals = [...deals];
+            break;
+        default:
+            throw new Error('dealsName ?');
+    };
+
+    // currentDeals.reverse();
+
+
+
     return (
         <>
             <div className="deals">
                 <div className="deals__header">Deals</div>
                 <ul className='deals__items'>
                     {
-                        deals.map((deal, index) => {
+                        currentDeals.map((deal, index) => {
                             const uniqueKey = getHashCode(deal) + index.toString();
 
                             function deleteDeal(event) {
-                                // console.log('deleted');
-                                // event.target.style.display = 'none';
-                                // event.target.remove();
-                            
-                                const updatedDeals = [...deals];
+                                const updatedDeals = [...currentDeals];
                                 updatedDeals.splice(updatedDeals.indexOf(deal), 1);
                                 setDeals(updatedDeals);
                                 console.log('setDeals(updatedDeals)');
@@ -34,7 +48,7 @@ export default function Deals({deals, setDeals, doneDeals, setDoneDeals}) {
                                         index={index}
                                         doneDeals={doneDeals}
                                         setDoneDeals={setDoneDeals}
-                                        deals={deals}
+                                        deals={currentDeals}
                                         setDeals={setDeals}
                                     />
                                 </li>

@@ -8,6 +8,11 @@
     margin-bottom: 15px;
 }
 
+.deals__items {
+    padding: 10px 10px;
+}
+
 .deals__li {
     transition: all .5s ease-out 0s;
+    
 }

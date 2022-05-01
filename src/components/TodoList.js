@@ -5,7 +5,7 @@ import TodoListHeader from "./TodoListHeader/TodoListHeader";
 
 function TodoList() {
     let [deals, setDeals] = useState(['need to buy sugar', 'remains in team', 'todo', 'remember path to shop']);
-    let [doneDeals, setDoneDeals] = useState([]);
+    let [doneDeals, setDoneDeals] = useState(['done1', 'done2']);
 
     return (
         <>
@@ -17,6 +17,7 @@ function TodoList() {
                 setDeals={setDeals}
             />
             <Deals 
+                dealsName={DealNames.uncompleted}
                 deals={deals}
                 setDeals={setDeals}
                 doneDeals={doneDeals}
@@ -24,6 +25,11 @@ function TodoList() {
             />
         </>
     )
+}
+
+export const DealNames = {
+    done: "done",
+    uncompleted: "uncompleted",
 }
 
 export default TodoList;

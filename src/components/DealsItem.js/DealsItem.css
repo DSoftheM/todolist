@@ -3,9 +3,27 @@
     justify-content: space-between;
     flex-grow: 0;
     background: rgb(207, 198, 252);
+
+    /* first shadow */
+    /* box-shadow: 5px 6px 5px 0px rgba(34, 60, 80, 0.3); */
+
+    /* second shadow */
+    box-shadow: 4px 4px 0px 2px rgb(34 60 80 / 30%);
+
+
     padding: 10px;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    /* animation: appearance 1s ease 0s 1 forwards; */
+}
+
+@keyframes appearance{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .item-deals__txt {
