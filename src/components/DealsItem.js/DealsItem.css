@@ -30,17 +30,13 @@
     transition: all 0.3s ease 0s;
 }
 
-.item-deals.done .item-deals__txt::before {
+.deals__li.done .item-deals__txt::before {
     opacity: 1;
     visibility: visible;
 }
 
-.item-deals.remove {
+.deals__li.remove {
     animation: remove 2s ease 1s 1 forwards;
-}
-
-li {
-    background: rgba(0, 0, 0, 0.407);
 }
 
 @keyframes remove{
@@ -49,14 +45,12 @@ li {
         opacity: 1;
         height: 64px;
         margin-bottom: 15px;
-        padding: 10px;
     }
     100% {
         transform: translateX(-150%);
         opacity: 0;
         height: 0px;
         margin-bottom: 0px;
-        padding: 0px;
     }
 }
 
@@ -70,7 +64,7 @@ li {
     gap: 10px;
 }
 
-.group-btns__add {
+.group-btns__done {
     width: 40px;
     height: 40px;
     border-radius: 10px;
@@ -81,7 +75,7 @@ li {
     transition: all 0.2s ease 0s;
 }
 
-.group-btns__add:hover {
+.group-btns__done:hover {
     background: rgb(125, 234, 140);
     cursor: pointer;
 }

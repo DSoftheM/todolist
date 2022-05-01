@@ -11,7 +11,6 @@ export default function TodoInput({deals, setDeals}) {
                 placeholder="type your deal..."
                 onChange={(e) => {
                     inputText = e.target.value;
-                    console.log('inputText :>> ', inputText);
                 }}
             ></input>
             <div 

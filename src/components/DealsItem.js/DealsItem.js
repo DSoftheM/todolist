@@ -1,15 +1,32 @@
 import "./DealsItem.css";
 import trashImgPath from "../../img/trash-bin.png";
 
-export default function DealsItem({dealText = '', isDone = false, index = -1}) {
+export default function DealsItem({dealText = '', isDone = false, index = -1, doneDeals, setDoneDeals, deals, setDeals}) {
+
     
+    function onDoneClick() {
+        const ul = document.querySelector('.deals__items'); 
+        console.log('ul :>> ', ul);
+        const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
+        index = getIndex(ul, thisLi);
+        
+        setDoneDeals([...doneDeals, dealText]);
+
+        
+
+        // const updatedDeals = [...deals];
+        // updatedDeals.splice(updatedDeals.indexOf(dealText), 1);
+        // setDeals(updatedDeals);
+
+        addClassesDoneAndRemove(index);
+    }
 
     return (
         <>
-            <div className={`deals__item item-deals ${isDone ? "done" : ""}`} onAnimationEnd={(e) => deleteDeal(e)}>
+            <div className={`deals__item item-deals ${isDone ? "done" : ""}`} >
                 <div className="item-deals__txt">{dealText}</div>
                 <div className="item-deals__group group-btns">
-                    <div className="group-btns__add" onClick={() => addClassDoneAndRemove(index)}>
+                    <div className="group-btns__done" onClick={() => onDoneClick()}>
                         <div className="check-mark"></div>
                     </div>
                     <div className="group-btns__remove">
@@ -23,11 +40,21 @@ export default function DealsItem({dealText = '', isDone = false, index = -1}) {
     );
 }
 
-function addClassDoneAndRemove(index) {
-    document.querySelectorAll('.item-deals')[index].classList.add('done');
-    document.querySelectorAll('.item-deals')[index].classList.add('remove');
+function getIndex(parent, child) {
+    console.log('parent :>> ', parent);
+    console.log('child :>> ', child);
+    return [...parent.children].indexOf(child);
 }
 
-function deleteDeal(event) {
-    event.target.style.display = 'none';
+
+
+function addClassesDoneAndRemove(index) {
+    document.querySelectorAll('.deals__li')[index].classList.add('done');
+    document.querySelectorAll('.deals__li')[index].classList.add('remove');
 }
+
+
+// const arr = ["1", '2', '3'];
+
+// arr.splice(arr.indexOf('3'), 1);
+// console.log(arr);

@@ -1,6 +1,7 @@
 .deals__header {
     text-align: center;
     font-weight: 500;
+    margin-bottom: 15px;
 }
 
 .deals__li:not(:last-child) {

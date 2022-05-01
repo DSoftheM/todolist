@@ -1,7 +1,7 @@
 import DealsItem from '../DealsItem.js/DealsItem';
 import './Deals.css';
 
-export default function Deals({deals}) {
+export default function Deals({deals, setDeals, doneDeals, setDoneDeals}) {
     return (
         <>
             <div className="deals">
@@ -9,14 +9,33 @@ export default function Deals({deals}) {
                 <ul className='deals__items'>
                     {
                         deals.map((deal, index) => {
+                            const uniqueKey = getHashCode(deal) + index.toString();
+
+                            function deleteDeal(event) {
+                                // console.log('deleted');
+                                // event.target.style.display = 'none';
+                                // event.target.remove();
+                            
+                                const updatedDeals = [...deals];
+                                updatedDeals.splice(updatedDeals.indexOf(deal), 1);
+                                setDeals(updatedDeals);
+                                console.log('setDeals(updatedDeals)');
+                            }
+
                             return (
                                 <li 
-                                key={getHashCode(deal) + index.toString()}
-                                className='deals__li'>
-                                    <DealsItem 
+                                    key={uniqueKey}
+                                    className={`deals__li ${uniqueKey}`}
+                                    onAnimationEnd={(e) => deleteDeal(e)}
+                                >
+                                    <DealsItem
                                         dealText={deal}
                                         isDone={false}
                                         index={index}
+                                        doneDeals={doneDeals}
+                                        setDoneDeals={setDoneDeals}
+                                        deals={deals}
+                                        setDeals={setDeals}
                                     />
                                 </li>
                             );
@@ -46,5 +65,7 @@ function getHashCode(str) {
     }
     return hash;
 }
+
+
 
 
