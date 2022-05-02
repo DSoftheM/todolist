@@ -4,19 +4,24 @@ import TodoInput from "./TodoInput/TodoInput";
 import TodoListHeader from "./TodoListHeader/TodoListHeader";
 
 function TodoList() {
+    // debugger
     const localStorageDeals = localStorage.getItem('deals');
     let initDeals = [];
-    if (localStorageDeals)
+    let dealsCount = 0;
+    if (localStorageDeals) {
         initDeals = localStorageDeals.split(',');
+        dealsCount = initDeals.length;
+    }
 
     let [deals, setDeals] = useState([...initDeals]);
-    let [doneDeals, setDoneDeals] = useState(['done1', 'done2']);
+    // debugger
+    let [doneDeals, setDoneDeals] = useState([]);
 
 
     return (
         <>
             <TodoListHeader
-                dealsCount={deals.length}
+                dealsCount={dealsCount}
             />
             <TodoInput 
                 deals={deals} 

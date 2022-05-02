@@ -1,19 +1,26 @@
 import "./DealsItem.css";
 import trashImgPath from "../../img/trash-bin.png";
 
-export default function DealsItem({dealText = '', isDone = false, index = -1, doneDeals, setDoneDeals, deals, setDeals}) {
-
+export default function DealsItem(props) {
+    // let 
+    const {
+        dealText = 'empty',
+        isDone = false,
+        doneDeals,
+        setDoneDeals,
+        deals,
+        setDeals,
+        // onTrashBinClick,
+    } = props;
     
     function onDoneClick() {
         const ul = document.querySelector('.deals__items'); 
         const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
-
-        console.log('ссылка на list ul :>> ', ul);
-        index = getIndex(ul, thisLi);
+        const index = getIndex(ul, thisLi);
         
         setDoneDeals([...doneDeals, dealText]);
 
-        updateLocalStorage();
+        // updateLocalStorage();
 
         // const updatedDeals = [...deals];
         // updatedDeals.splice(updatedDeals.indexOf(dealText), 1);
@@ -24,10 +31,17 @@ export default function DealsItem({dealText = '', isDone = false, index = -1, do
 
     function updateLocalStorage() {
         let currentStorageDeals = localStorage.getItem('deals').split(',');
-        let indexOfStorage = currentStorageDeals.indexOf(dealText);
+        let indexInStorage = currentStorageDeals.indexOf(dealText);
         let updatedStorageDeals = [...currentStorageDeals];
-        updatedStorageDeals.splice(indexOfStorage, 1);
+        updatedStorageDeals.splice(indexInStorage, 1);
         localStorage.setItem('deals', updatedStorageDeals);
+    }
+
+    function onTrashBinClick(event) {
+        const ul = document.querySelector('.deals__items'); 
+        const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
+        thisLi.classList.add('deleted', 'remove-reversed');
+        // updateLocalStorage();
     }
 
     return (
@@ -40,7 +54,12 @@ export default function DealsItem({dealText = '', isDone = false, index = -1, do
                     </div>
                     <div className="group-btns__remove">
                         <div className="trash">
-                            <img className="trash__img" src={trashImgPath} alt="trash"></img>
+                            <img 
+                                className="trash__img" 
+                                src={trashImgPath} 
+                                alt="trash"
+                                onClick={(e) => onTrashBinClick(e)}
+                            ></img>
                         </div>
                     </div>
                 </div>
@@ -50,8 +69,6 @@ export default function DealsItem({dealText = '', isDone = false, index = -1, do
 }
 
 function getIndex(parent, child) {
-    console.log('parent :>> ', parent);
-    console.log('child :>> ', child);
     return [...parent.children].indexOf(child);
 }
 

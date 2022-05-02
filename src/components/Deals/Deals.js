@@ -32,11 +32,36 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
                         currentDeals.map((deal, index) => {
                             const uniqueKey = getHashCode(deal) + index.toString();
 
-                            function deleteDeal(event) {
+                            function deleteDeal(animationEvent) {
+                                const animationName = animationEvent.nativeEvent.animationName;
+                                if (animationName === Animations.addToDone) {
+                                    deleteFromState(deal);
+                                    deleteFromLocalStorage(deal);
+                                    addToDoneDealsState(deal);
+                                } else if (animationName === Animations.delete) {
+                                    deleteFromState(deal);
+                                    deleteFromLocalStorage(deal);
+                                }
+                            }
+
+                            function addToDoneDealsState(element) {
+                                localStorage.setItem('doneDeals', element);
+                                console.log(`${element} добавлен в doneDeals state`);
+                            }
+
+                            function deleteFromState(element) {
                                 const updatedDeals = [...currentDeals];
-                                updatedDeals.splice(updatedDeals.indexOf(deal), 1);
+                                updatedDeals.splice(updatedDeals.indexOf(element), 1);
                                 setDeals(updatedDeals);
-                                console.log('setDeals(updatedDeals)');
+                                console.log(`${element} удалён из deals state`);
+                            }
+
+                            function deleteFromLocalStorage(element) {
+                                const data = localStorage.getItem('deals').split(',');
+                                const index = data.indexOf(element);
+                                data.splice(index, 1);
+                                localStorage.setItem('deals', data);
+                                console.log(`${element} удалён из deleteFromLocalStorage`);
                             }
 
                             return (
@@ -48,11 +73,11 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
                                     <DealsItem
                                         dealText={deal}
                                         isDone={false}
-                                        index={index}
                                         doneDeals={doneDeals}
                                         setDoneDeals={setDoneDeals}
                                         deals={currentDeals}
                                         setDeals={setDeals}
+                                        // onTrashBinClick={(element) => deleteDeal(element)}
                                     />
                                 </li>
                             );
@@ -81,6 +106,11 @@ function getHashCode(str) {
         hash = hash & hash;
     }
     return hash;
+}
+
+const Animations = {
+    addToDone: 'remove',
+    delete: 'remove-reversed',
 }
 
 

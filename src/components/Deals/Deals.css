@@ -9,10 +9,18 @@
 }
 
 .deals__items {
-    padding: 10px 10px;
+    padding: 10px 0px;
 }
 
 .deals__li {
     transition: all .5s ease-out 0s;
     
+}
+
+.deals__li.deleted .deals__item{
+    background: rgb(248, 70, 118);
+}
+
+.deals__li.done .deals__item{
+    background: rgb(106, 216, 156);
 }

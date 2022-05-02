@@ -56,6 +56,10 @@
     animation: remove 2s ease 1s 1 forwards;
 }
 
+.deals__li.remove-reversed {
+    animation: remove-reversed 2s ease 1s 1 forwards;
+}
+
 @keyframes remove{
     0% {
         transform: translateX(0%);
@@ -65,6 +69,21 @@
     }
     100% {
         transform: translateX(-150%);
+        opacity: 0;
+        height: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+@keyframes remove-reversed{
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+        height: 64px;
+        margin-bottom: 15px;
+    }
+    100% {
+        transform: translateX(150%);
         opacity: 0;
         height: 0px;
         margin-bottom: 0px;
