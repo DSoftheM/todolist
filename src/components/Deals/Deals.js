@@ -103,11 +103,12 @@ export default function Deals(props) {
                                 localStorage.setItem(key, data);
                                 console.log(`${element} удалён из ${key}(localStorage)`);
                             }
+                            const color = dealName === DealNames.done ? 'green' : '';
 
                             return (
                                 <li 
                                     key={uniqueKey}
-                                    className={`deals__li ${uniqueKey}`}
+                                    className={`deals__li ${uniqueKey} ${color}`}
                                     onAnimationEnd={(e) => deleteDeal(e)}
                                 >
                                     <DealsItem

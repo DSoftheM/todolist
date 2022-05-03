@@ -17,10 +17,11 @@
     
 }
 
-.deals__li.deleted .deals__item{
-    background: rgb(248, 70, 118);
+.deals__li.done .deals__item,
+.deals__li.green .deals__item {
+    background: rgb(106, 216, 156);
 }
 
-.deals__li.done .deals__item{
-    background: rgb(106, 216, 156);
+.deals__li.deleted .deals__item{
+    background: rgb(248, 70, 118);
 }

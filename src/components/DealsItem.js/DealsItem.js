@@ -43,9 +43,12 @@ export default function DealsItem(props) {
 
     function onTrashBinClick(event) {
         const ul = document.querySelector('.deals__items'); 
+
+        // there isn't better way to find current <li></li>
         const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
+
+        // this classes start the animation with event: onAnimationEnd
         thisLi.classList.add('deleted', 'remove-reversed');
-        // updateLocalStorage();
     }
 
     return (
