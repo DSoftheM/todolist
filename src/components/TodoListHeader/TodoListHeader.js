@@ -1,12 +1,12 @@
 import './TodoListHeader.css';
 
-function TodoListHeader({dealsCount}) {
+function TodoListHeader({count}) {
     return (
         <div className='todolist__header header-todolist'>
             <div className='header-todolist__name'>TodoList</div>
             <div className='header-todolist__deals'>
                 Deals: 
-                <span> {dealsCount}</span>
+                <span> {count}</span>
             </div>
         </div>
     )

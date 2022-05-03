@@ -2,7 +2,14 @@ import DealsItem from '../DealsItem.js/DealsItem';
 import { DealNames } from '../TodoList';
 import './Deals.css';
 
-export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDeals}) {
+export default function Deals(props) {
+    const {
+        dealName, 
+        deals, 
+        setDeals, 
+        doneDeals, 
+        setDoneDeals
+    } = props;
 
     // let localStorageDeals = localStorage.getItem('deals');
 
@@ -10,7 +17,7 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
     //     ? localStorageDeals.split(',') 
     //     : [];
     let currentDeals = [];
-    switch (dealsName) {
+    switch (dealName) {
         case DealNames.done:
             currentDeals = localStorage.getItem('doneDeals');
             if (currentDeals)
@@ -22,7 +29,7 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
                 currentDeals = currentDeals.split(',')
             break;
         default:
-            throw new Error('dealsName ?');
+            throw new Error('dealName ?');
     };
     currentDeals = currentDeals || [];
 
@@ -41,14 +48,21 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
                             function deleteDeal(animationEvent) {
                                 const animationName = animationEvent.nativeEvent.animationName;
                                 if (animationName === Animations.addToDone) {
-                                    deleteFromDealsState(deal);
+                                    deleteFromState('deals', deal);
                                     addToDoneDealsState(deal);
 
                                     deleteFromLocalStorage('deals', deal);
                                     addToLocalStorage('doneDeals', deal);
                                 } else if (animationName === Animations.delete) {
-                                    deleteFromDealsState(deal);
-                                    deleteFromLocalStorage('deals', deal);
+
+                                    if (dealName === DealNames.done) {
+                                        deleteFromState('doneDeals', deal);
+                                        deleteFromLocalStorage('doneDeals', deal);
+                                    } else if (dealName === DealNames.uncompleted) {
+                                        deleteFromState('deals', deal);
+                                        deleteFromLocalStorage('deals', deal);
+                                    }
+
                                 }
                             }
 
@@ -63,11 +77,23 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
                                 console.log(`${element} добавлен в ${key}(localStorage)`);
                             }
 
-                            function deleteFromDealsState(element) {
-                                const updatedDeals = [...currentDeals];
-                                updatedDeals.splice(updatedDeals.indexOf(element), 1);
-                                setDeals(updatedDeals);
-                                console.log(`${element} удалён из deals state`);
+                            function deleteFromState(state, element) {
+                                switch (state) {
+                                    case 'deals':
+                                        const deals = [...currentDeals];
+                                        deals.splice(deals.indexOf(element), 1);
+                                        setDeals(deals);
+                                        console.log(`${element} удалён из deals state`);
+                                        break;
+                                    case 'doneDeals':
+                                        const doneDeals = [...currentDeals];
+                                        doneDeals.splice(doneDeals.indexOf(element), 1);
+                                        setDoneDeals(doneDeals);
+                                        console.log(`${element} удалён из done deals state`);
+                                        break;
+                                    default:
+                                        throw new Error('state ?');
+                                }
                             }
 
                             function deleteFromLocalStorage(key, element) {
@@ -85,6 +111,7 @@ export default function Deals({dealsName, deals, setDeals, doneDeals, setDoneDea
                                     onAnimationEnd={(e) => deleteDeal(e)}
                                 >
                                     <DealsItem
+                                        dealName={dealName}
                                         dealText={deal}
                                         isDone={false}
                                         doneDeals={doneDeals}

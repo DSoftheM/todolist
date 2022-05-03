@@ -1,9 +1,11 @@
 import "./DealsItem.css";
 import trashImgPath from "../../img/trash-bin.png";
+import { DealNames } from "../TodoList";
 
 export default function DealsItem(props) {
     // let 
     const {
+        dealName,
         dealText = 'empty',
         isDone = false,
         doneDeals,
@@ -50,21 +52,24 @@ export default function DealsItem(props) {
         <>
             <div className={`deals__item item-deals ${isDone ? "done" : ""}`} >
                 <div className="item-deals__txt">{dealText}</div>
-                <div className="item-deals__group group-btns">
-                    <div className="group-btns__done" onClick={() => onDoneClick()}>
-                        <div className="check-mark"></div>
-                    </div>
-                    <div className="group-btns__remove">
-                        <div className="trash">
-                            <img 
-                                className="trash__img" 
-                                src={trashImgPath} 
-                                alt="trash"
-                                onClick={(e) => onTrashBinClick(e)}
-                            ></img>
+                    <div className="item-deals__group group-btns">
+                        {
+                            dealName === DealNames.uncompleted &&
+                                <div className="group-btns__done" onClick={() => onDoneClick()}>
+                                    <div className="check-mark"></div>
+                                </div>
+                        }
+                        <div className="group-btns__remove">
+                            <div className="trash">
+                                <img 
+                                    className="trash__img" 
+                                    src={trashImgPath} 
+                                    alt="trash"
+                                    onClick={(e) => onTrashBinClick(e)}
+                                ></img>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
         </>
     );
@@ -73,9 +78,6 @@ export default function DealsItem(props) {
 function getIndex(parent, child) {
     return [...parent.children].indexOf(child);
 }
-
-
-
 function addClassesDoneAndRemove(index) {
     document.querySelectorAll('.deals__li')[index].classList.add('done', 'remove');
 }

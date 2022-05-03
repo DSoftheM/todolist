@@ -26,10 +26,23 @@ export default function TodoList() {
     let [doneDeals, setDoneDeals] = useState([...initDoneDeals]);
 
     let [dealName, setDealName] = useState(DealNames.uncompleted);
+
+    let count = 0;
+    switch (dealName) {
+        case DealNames.done:
+            count = doneDeals.length;
+            break;
+        case DealNames.uncompleted:
+            count = deals.length;
+            break;
+        default:
+            throw new Error('dealName ?');
+    }
+
     return (
         <>
             <TodoListHeader
-                dealsCount={dealsCount}
+                count={count}
             />
             <TodoInput 
                 deals={deals} 
@@ -39,7 +52,7 @@ export default function TodoList() {
                 setDealName={(name) => setDealName(name)}
             />
             <Deals 
-                dealsName={dealName}
+                dealName={dealName}
 
                 deals={deals}
                 doneDeals={doneDeals}

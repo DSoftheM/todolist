@@ -3,7 +3,7 @@ import './DoneDealsCheckbox.css';
 export default function DoneDealsCheckbox(props) {
 
     const {
-        setDealName
+        setDealName,
     } = props;
 
     function onDoneChange(e) {
