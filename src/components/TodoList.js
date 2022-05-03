@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Deals from "./Deals/Deals";
+import Settings from "./Settings/Settings";
 import TodoInput from "./TodoInput/TodoInput";
 import TodoListHeader from "./TodoListHeader/TodoListHeader";
 
-function TodoList() {
+export default function TodoList() {
     // debugger
     const localStorageDeals = localStorage.getItem('deals');
     let initDeals = [];
@@ -13,11 +14,18 @@ function TodoList() {
         dealsCount = initDeals.length;
     }
 
+    const localStorageDoneDeals = localStorage.getItem('doneDeals');
+    let initDoneDeals = [];
+    let doneDealsCount = 0;
+    if (localStorageDoneDeals) {
+        initDoneDeals = localStorageDoneDeals.split(',');
+        doneDealsCount = initDoneDeals.length;
+    }
+
     let [deals, setDeals] = useState([...initDeals]);
-    // debugger
-    let [doneDeals, setDoneDeals] = useState([]);
+    let [doneDeals, setDoneDeals] = useState([...initDoneDeals]);
 
-
+    let [dealName, setDealName] = useState(DealNames.uncompleted);
     return (
         <>
             <TodoListHeader
@@ -27,11 +35,16 @@ function TodoList() {
                 deals={deals} 
                 setDeals={setDeals}
             />
+            <Settings
+                setDealName={(name) => setDealName(name)}
+            />
             <Deals 
-                dealsName={DealNames.uncompleted}
+                dealsName={dealName}
+
                 deals={deals}
-                setDeals={setDeals}
                 doneDeals={doneDeals}
+                
+                setDeals={setDeals}
                 setDoneDeals={setDoneDeals}
             />
         </>
@@ -42,5 +55,3 @@ export const DealNames = {
     done: "done",
     uncompleted: "uncompleted",
 }
-
-export default TodoList;

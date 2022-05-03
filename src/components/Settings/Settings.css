@@ -1,0 +1,30 @@
+.settings {
+    border: 1px solid black;
+}
+
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.custom-checkbox + label {
+    display: inline-flex;
+    /* display: flex; */
+    align-items: center;
+    user-select: none;
+}
+
+.custom-checkbox + label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid black;
+    margin-right: 5px;
+    transition: all 0.3s ease 0s;
+}
+
+.custom-checkbox:checked + label::before {
+    background-color: rgba(85, 250, 79, 0.87);
+}

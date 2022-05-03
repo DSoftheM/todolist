@@ -20,6 +20,10 @@ export default function TodoInput({deals, setDeals}) {
             console.log('value is empty');
         }
     }
+
+    function onSettingsClick(event) {
+        
+    }
     
     let inputText = '';
     return (
@@ -36,6 +40,11 @@ export default function TodoInput({deals, setDeals}) {
                 className="add"
                 onClick={(e) => onAddClick(e)}
             >Add</div>
+
+            <div 
+                className="settings-btn"
+                onClick={(e) => onSettingsClick(e)}
+            >Settings</div>
         </div>
     );
 }

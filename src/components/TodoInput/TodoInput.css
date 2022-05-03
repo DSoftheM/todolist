@@ -34,3 +34,15 @@
     background: rgb(191, 255, 179);
     cursor: url(../../img/cursors/add.svg), pointer;
 }
+
+.settings-btn {
+    padding: 10px 15px;
+    background: rgb(232, 223, 109);
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.settings-btn:hover {
+    background: rgb(191, 255, 179);
+    cursor: url(../../img/cursors/settings.png), pointer;
+}

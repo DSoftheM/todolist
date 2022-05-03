@@ -18,7 +18,9 @@ export default function DealsItem(props) {
         const thisLi = Array.from(ul.childNodes).filter(x => x.textContent === dealText)[0];
         const index = getIndex(ul, thisLi);
         
-        setDoneDeals([...doneDeals, dealText]);
+        // setDoneDeals([...doneDeals, dealText]);
+
+
 
         // updateLocalStorage();
 
