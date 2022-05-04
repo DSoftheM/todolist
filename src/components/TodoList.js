@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Deals from "./Deals/Deals";
 import Settings from "./Settings/Settings";
 import TodoInput from "./TodoInput/TodoInput";
@@ -38,6 +38,11 @@ export default function TodoList() {
         default:
             throw new Error('dealName ?');
     }
+
+    useEffect(() => {
+        const dealsCount = document.querySelector('.header-todolist__deals span');
+        dealsCount.style.animationName = 'dealsCount';
+    }, [count]);
 
     return (
         <>

@@ -13,12 +13,9 @@
 
 @keyframes dealsCount {
     0% {
-        
         color: rgb(255, 255, 255);
-        transform: rotate(0deg);
     }
     100% {
         color: #000;
-        transform: rotate(360deg);
     }
 }
