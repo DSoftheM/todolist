@@ -1,4 +1,3 @@
-import { dblClick } from '@testing-library/user-event/dist/click';
 import './DoneDealsCheckbox.css';
 
 export default function DoneDealsCheckbox(props) {
@@ -38,14 +37,27 @@ export default function DoneDealsCheckbox(props) {
 
 function addAnimationNameToDealsCount() {
     const dealsCount = document.querySelector('.header-todolist__deals span');
-    console.log(dealsCount.textContent);
+    
 }
 
 function addAnimationNameToUl() {
-    const ul = document.querySelector('.deals__items');
-    if (ul.style.animationName === 'ul-appearance') {
-        ul.style.animationName = 'ul-appearance-reverse';
-    } else if (ul.style.animationName === 'ul-appearance-reverse') {
-        ul.style.animationName = 'ul-appearance'
+    const ul = document.querySelector('ul');
+
+    switch (ul.style.animationName) {
+        case 'ul-appearance':
+            ul.style.animationName = 'ul-appearance-reverse';
+            break;
+        case 'ul-appearance-reverse':
+            ul.style.animationName = 'ul-appearance';
+            break;
+        default:
+            throw new Error(`animationName = ${ul.style.animationName} is invalid`);
+    }
+}
+
+const Animations = {
+    ul: {
+        appearance: 'ul-appearance',
+        reverse: 'ul-appearance-reverse',
     }
 }

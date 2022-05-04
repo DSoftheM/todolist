@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import './TodoListHeader.css';
 
 function TodoListHeader({count}) {

@@ -1,4 +1,4 @@
-import DealsItem from '../DealsItem.js/DealsItem';
+import DealsItem from '../DealsItem/DealsItem';
 import { DealNames } from '../TodoList';
 import './Deals.css';
 
@@ -40,7 +40,7 @@ export default function Deals(props) {
         <>
             <div className="deals">
                 <div className="deals__header">Deals</div>
-                <ul className='deals__items'>
+                <ul className='deals__items' style={{animationName: 'ul-appearance-reverse'}}>
                     {
                         currentDeals.map((deal, index) => {
                             const uniqueKey = getHashCode(deal) + index.toString();
