@@ -4,6 +4,10 @@
     border-bottom: 2px solid black;
     padding-bottom: 10px;
     margin-bottom: 10px;
+    user-select: none;
+}
+
+.header-todolist__name {
 }
 
 .header-todolist__deals span {

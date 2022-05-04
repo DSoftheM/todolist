@@ -38,6 +38,25 @@
     
 }
 
+li.appearance {
+    animation: li-appearance 2s ease 0s 1 forwards;
+}
+
+@keyframes li-appearance{
+    0% {
+        transform: translateY(-232%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-232%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0%);
+    }
+    
+}
+
 .deals__li.done .deals__item,
 .deals__li.green .deals__item {
     background: rgb(106, 216, 156);

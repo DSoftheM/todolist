@@ -63,6 +63,8 @@ export default function Deals(props) {
                                         deleteFromLocalStorage('deals', deal);
                                     }
 
+                                } else if (animationName === Animations.appearance) {
+                                    animationEvent.target.style.animation = null;
                                 }
                             }
 
@@ -144,6 +146,7 @@ function getHashCode(str) {
 const Animations = {
     addToDone: 'remove',
     delete: 'remove-reversed',
+    appearance : 'li-appearance'
 }
 
 

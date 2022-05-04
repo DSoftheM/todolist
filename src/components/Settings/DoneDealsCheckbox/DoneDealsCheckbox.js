@@ -1,3 +1,4 @@
+import { DealNames } from '../../TodoList';
 import './DoneDealsCheckbox.css';
 
 export default function DoneDealsCheckbox(props) {
@@ -11,7 +12,8 @@ export default function DoneDealsCheckbox(props) {
         localStorage.setItem('isChecked', isChecked);
 
         // bring to up status
-        setDealName(isChecked ? 'done' : 'uncompleted');
+        setDealName(isChecked ? DealNames.done : DealNames.uncompleted);
+        
 
 
         // animations
@@ -44,11 +46,11 @@ function addAnimationNameToUl() {
     const ul = document.querySelector('ul');
 
     switch (ul.style.animationName) {
-        case 'ul-appearance':
-            ul.style.animationName = 'ul-appearance-reverse';
+        case Animations.ul.appearance:
+            ul.style.animationName = Animations.ul.reverse;
             break;
-        case 'ul-appearance-reverse':
-            ul.style.animationName = 'ul-appearance';
+        case Animations.ul.reverse:
+            ul.style.animationName = Animations.ul.appearance;
             break;
         default:
             throw new Error(`animationName = ${ul.style.animationName} is invalid`);

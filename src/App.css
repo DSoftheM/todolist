@@ -3,3 +3,13 @@
     overflow: hidden;
     padding-top: 50px;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 3px solid rgb(153, 98, 247);
+}

@@ -5,6 +5,7 @@ import TodoInput from "./TodoInput/TodoInput";
 import TodoListHeader from "./TodoListHeader/TodoListHeader";
 
 export default function TodoList() {
+    
     // debugger
     const localStorageDeals = localStorage.getItem('deals');
     let initDeals = [];

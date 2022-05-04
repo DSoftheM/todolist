@@ -12,6 +12,7 @@
     border: 0;
     transition: all 0.3s ease 0s;
     font-family: Montserrat;
+    text-align: center;
 }
 
 .input-field:focus {
@@ -28,6 +29,7 @@
     background: rgb(120, 224, 99);
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    user-select: none;
 }
 
 .add:hover {
@@ -40,6 +42,7 @@
     background: rgb(232, 223, 109);
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    user-select: none;
 }
 
 .settings-btn:hover {

@@ -17,7 +17,7 @@ export default function TodoInput({deals, setDeals}) {
             }
             input.value = '';
         } else {
-            console.log('value is empty');
+            throw new Error('value is empty');
         }
     }
 
