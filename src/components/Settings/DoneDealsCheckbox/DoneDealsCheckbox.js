@@ -1,3 +1,4 @@
+import { dblClick } from '@testing-library/user-event/dist/click';
 import './DoneDealsCheckbox.css';
 
 export default function DoneDealsCheckbox(props) {
@@ -5,7 +6,6 @@ export default function DoneDealsCheckbox(props) {
     const {
         setDealName,
     } = props;
-
     function onDoneChange(e) {
         // add to local storage
         const isChecked = e.target.checked;
@@ -15,7 +15,10 @@ export default function DoneDealsCheckbox(props) {
         setDealName(isChecked ? 'done' : 'uncompleted');
 
 
-        //
+        // animations
+        addAnimationNameToUl();
+        addAnimationNameToDealsCount();
+        
     }
 
     return (
@@ -31,4 +34,18 @@ export default function DoneDealsCheckbox(props) {
             </div>
         </>
     )
+}
+
+function addAnimationNameToDealsCount() {
+    const dealsCount = document.querySelector('.header-todolist__deals span');
+    console.log(dealsCount.textContent);
+}
+
+function addAnimationNameToUl() {
+    const ul = document.querySelector('.deals__items');
+    if (ul.style.animationName === 'ul-appearance') {
+        ul.style.animationName = 'ul-appearance-reverse';
+    } else if (ul.style.animationName === 'ul-appearance-reverse') {
+        ul.style.animationName = 'ul-appearance'
+    }
 }

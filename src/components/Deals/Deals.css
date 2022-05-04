@@ -10,6 +10,25 @@
 
 .deals__items {
     padding: 10px 0px;
+    animation:  1s ease 0s 1 alternate;
+}
+
+@keyframes ul-appearance {
+    0% {
+        transform: translateY(-400%);
+    }
+    100% {
+        transform: translateY(0%) ;
+    }
+}
+
+@keyframes ul-appearance-reverse {
+    0% {
+        transform: translateY(400%) ;
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
 .deals__li {
@@ -25,3 +44,5 @@
 .deals__li.deleted .deals__item{
     background: rgb(248, 70, 118);
 }
+
+
