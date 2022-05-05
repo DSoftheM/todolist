@@ -22,7 +22,9 @@ export default function TodoInput({deals, setDeals}) {
     }
 
     function onSettingsClick(event) {
-        
+        const settings = document.querySelector('.settings');
+        settings.classList.toggle('hide');
+        settings.classList.toggle('show');
     }
     
     let inputText = '';

@@ -11,7 +11,7 @@ export default function Settings(props) {
 
     return (
         <>
-            <div className="settings">
+            <div className="settings show">
                 <div className="settings__items">
                     <DoneDealsCheckbox
                         setDealName={(name) => setDealName(name)}

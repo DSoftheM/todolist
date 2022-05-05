@@ -2,5 +2,40 @@
     background: #acb5e6;
     border-radius: 10px;
     padding: 10px;
+    height: 100%;
+    transition: all 2s ease 0s;
 }
 
+.settings.hide {
+    animation: settings-hide .5s ease 0s 1 forwards;
+    overflow: hidden;
+}
+.settings.show {
+    animation: settings-show .5s ease 0s 1 forwards;
+    overflow: hidden;
+}
+.settings__items {
+    /* overflow: hidden; */
+}
+
+@keyframes settings-show {
+    0% {
+        padding: 0px;
+        height: 0px;
+    }
+    100% {
+        padding: 10px;
+        height: 67px;
+    }
+}
+
+@keyframes settings-hide {
+    0% {
+        padding: 10px;
+        height: 67px;
+    }
+    100% {
+        padding: 0px;
+        height: 0px;
+    }
+}
