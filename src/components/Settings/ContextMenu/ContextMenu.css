@@ -1,0 +1,37 @@
+.right-click-area {
+    min-height: 100vh;
+}
+
+.right-click-menu {
+    transition: none;
+    display: inline-block;
+    background: rgb(0, 0, 0);
+    color: #fff;
+    flex-direction: column;
+    position: fixed;
+    display: none;
+    border-radius: 5px;
+}
+
+.right-click-menu.active {
+    display: inline-flex;
+
+}
+.right-click-menu__item {
+    user-select: none;
+    padding: 3px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+.right-click-menu__item:hover {
+    background: #fff;
+    color: #000;
+}
+
+.right-click-menu__item:first-child {
+    border-radius: 5px 5px 0px 0px;
+}
+.right-click-menu__item:last-child {
+    border-radius: 0px 0px 5px 5px;
+    border: 0;
+}
