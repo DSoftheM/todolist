@@ -32,6 +32,8 @@ export default function ContextMenuCheckbox(props) {
         } else {
             menuArea.oncontextmenu = null;
         }
+
+        document.querySelector('.right-click-menu__item').addEventListener('click', () => console.log(97))
     }
 
     return (
