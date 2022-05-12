@@ -5,6 +5,11 @@ import './Settings.css';
 export default function Settings(props) {
     const {
         setDealName,
+        deals,
+        setDeals,
+        doneDeals,
+        setDoneDeals,
+        dealName,
     } = props;
 
     
@@ -16,7 +21,15 @@ export default function Settings(props) {
                     <DoneDealsCheckbox
                         setDealName={(name) => setDealName(name)}
                     />
-                    <ContextMenuCheckbox/>
+                    <ContextMenuCheckbox
+                        deals={deals}
+                        doneDeals={doneDeals}
+                        
+                        setDeals={(deals) => setDeals(deals)}
+                        setDoneDeals={(deals) => setDoneDeals(deals)}
+
+                        dealName={dealName}
+                    />
                 </div>
             </div>
         </>

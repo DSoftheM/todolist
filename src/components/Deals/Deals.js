@@ -107,11 +107,16 @@ export default function Deals(props) {
                             }
                             const color = dealName === DealNames.done ? 'green' : '';
 
+                            function liOnClick(event) {
+                                
+                            }
+
                             return (
                                 <li 
                                     key={uniqueKey}
                                     className={`deals__li ${uniqueKey} ${color}`}
                                     onAnimationEnd={(e) => deleteDeal(e)}
+                                    onClick={e => liOnClick(e)}
                                 >
                                     <DealsItem
                                         dealName={dealName}

@@ -5,8 +5,6 @@ import TodoInput from "./TodoInput/TodoInput";
 import TodoListHeader from "./TodoListHeader/TodoListHeader";
 
 export default function TodoList() {
-    
-    // debugger
     const localStorageDeals = localStorage.getItem('deals');
     let initDeals = [];
     let dealsCount = 0;
@@ -56,6 +54,13 @@ export default function TodoList() {
             />
             <Settings
                 setDealName={(name) => setDealName(name)}
+
+                deals={deals}
+                doneDeals={doneDeals}
+                setDeals={(deals) => setDeals(deals)}
+                setDoneDeals={(deals) => setDoneDeals(deals)}
+
+                dealName={dealName}
             />
             <Deals 
                 dealName={dealName}
@@ -63,14 +68,14 @@ export default function TodoList() {
                 deals={deals}
                 doneDeals={doneDeals}
                 
-                setDeals={setDeals}
-                setDoneDeals={setDoneDeals}
+                setDeals={(deals) => setDeals(deals)}
+                setDoneDeals={(deals) => setDoneDeals(deals)}
             />
         </>
     )
 }
 
 export const DealNames = {
-    done: "done",
-    uncompleted: "uncompleted",
+    done: "doneDeals",
+    uncompleted: "deals",
 }
